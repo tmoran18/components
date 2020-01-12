@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Responsive Hamburger Navigation</title>
+    <style>
+      html * {
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .top-nav {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+      }
+      nav * {
+        text-decoration: none;
+        
+      }
+      .menu-links {
+        margin-left: 50px;
+        transition: all 0.5s ease;
+      }
+
+      .menu-links a {
+        color: #000;
+        padding: 15px;
+      }
+      
+      .hamburger {
+        color: #000;
+        font-size: 30px;
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        /* .menu-links {
+          display: none;
+          
+        } */
+        .hamburger {
+          display: block;
+        }
+        .top-nav {
+          justify-content: space-between;
+        }
+        .menu-links {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          position: absolute;
+          top: -16rem;
+          left: 0;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          
+        }
+        .menu-links.mobile a {
+          border-top: 1px solid #ccc;
+        }
+        .menu-links.mobile a:last-child {
+          border-bottom: 1px solid #ccc;
+        }
+        .menu-links.mobile.transition{
+            top:5.6rem;
+            
+        }
+      }
+
+      .logo img {
+          width:150px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="logo">
+          <img src="../img/logo.png" alt="">
+      </div>
+      <div class="menu-links" id="menuLinks">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="hamburger-menu">
+        <a href="#" class="hamburger">&#9776;</a>
+      </div>
+    </nav>
+
+    <script>
+      var menuLinks = document.getElementById("menuLinks");
+      var hamburger = document.querySelector(".hamburger-menu");
+
+      hamburger.addEventListener("click", mobileNav);
+
+      function mobileNav() {
+        if (menuLinks.className === "menu-links") {
+          menuLinks.className += " mobile" + " transition";
+          console.log("clicked");
+        } else {
+          menuLinks.className = "menu-links";
+          console.log("clicked R");
+        }
+      }
+
+      function myFunction(x) {
+        if (x.matches) {
+          menuLinks.className = "menu-links";
+        }
+      }
+
+      var x = window.matchMedia("(min-width: 600px)");
+      myFunction(x); // Call listener function at run time
+      x.addListener(myFunction); // Attach listener function on state changes
+    </script>
+  </body>
+</html>
