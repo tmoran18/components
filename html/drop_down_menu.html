@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Drop Down Menu</title>
+    <style>
+      /* Formatting */
+      body {
+        background: #1c212e;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .wrapper {
+        max-width: 600px;
+        margin: 100px auto;
+      }
+      /* Dropdown Button */
+      .dropbtn {
+        border: 1.5px solid #08d665;
+        background: none;
+        color: white;
+        border-radius: 4px;
+        padding: 16px;
+        min-width: 300px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .dropbtn:focus {
+        outline: none;
+      }
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        border: 1.5px solid #08d665;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        min-width: 300px;
+        border-radius: 4px;
+        border-top: none;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content li {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content li:hover {
+        background-color: #08d665;
+        color: black;
+        cursor: pointer;
+      }
+
+      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+      .show {
+        display: block;
+      }
+      .triangle-down {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="dropdown" onclick="myFunction()">
+        <button class="dropbtn btn">
+          Search by Classification
+          <span class="btn triangle-down">&#9660;</span>
+        </button>
+
+        <div id="myDropdown" class="dropdown-content">
+          <li>Rated G</li>
+          <li>Rated PG 13</li>
+          <li>Rated M</li>
+          <li>Rated MA 15+</li>
+          <li>Rated R 18+</li>
+          <li>Rated XXX</li>
+        </div>
+      </div>
+    </div>
+    <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches(".btn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
